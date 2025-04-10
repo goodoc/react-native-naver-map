@@ -157,12 +157,13 @@ using namespace facebook::react;
     [_view setShowLocationButton:next.isShowLocationButton];
     
   static BOOL isFirstScaleBarSet = YES;
-  static BOOL isFirstZoomControlsSet = YES;
 
   if (isFirstScaleBarSet || prev.isShowScaleBar != next.isShowScaleBar) {
     [_view setShowScaleBar:next.isShowScaleBar];
     isFirstScaleBarSet = NO;
   }
+  
+  static BOOL isFirstZoomControlsSet = YES;
 
   if (isFirstZoomControlsSet || prev.isShowZoomControls != next.isShowZoomControls) {
     [_view setShowZoomControls:next.isShowZoomControls];
