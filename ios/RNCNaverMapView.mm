@@ -155,10 +155,19 @@ using namespace facebook::react;
     [_view setShowIndoorLevelPicker:next.isShowIndoorLevelPicker];
   if (prev.isShowLocationButton != next.isShowLocationButton)
     [_view setShowLocationButton:next.isShowLocationButton];
-  if (prev.isShowScaleBar != next.isShowScaleBar)
+    
+  static BOOL isFirstScaleBarSet = YES;
+  static BOOL isFirstZoomControlsSet = YES;
+
+  if (isFirstScaleBarSet || prev.isShowScaleBar != next.isShowScaleBar) {
     [_view setShowScaleBar:next.isShowScaleBar];
-  if (prev.isShowZoomControls != next.isShowZoomControls)
+    isFirstScaleBarSet = NO;
+  }
+
+  if (isFirstZoomControlsSet || prev.isShowZoomControls != next.isShowZoomControls) {
     [_view setShowZoomControls:next.isShowZoomControls];
+    isFirstZoomControlsSet = NO;
+  }
 
   if (prev.logoAlign != next.logoAlign) {
     if (next.logoAlign == RNCNaverMapViewLogoAlign::TopLeft)
