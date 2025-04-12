@@ -162,7 +162,7 @@ using namespace facebook::react;
     [_view setShowScaleBar:next.isShowScaleBar];
     isFirstScaleBarSet = NO;
   }
-  
+
   static BOOL isFirstZoomControlsSet = YES;
 
   if (isFirstZoomControlsSet || prev.isShowZoomControls != next.isShowZoomControls) {
